@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Menu } from "./components/Menu/Menu.component";
+import BannerMain from "./components/BannerMain/BannerMain.component";
+import Carousel from "./components/Carousel/Carousel.component";
+import Footer from "./components/Footer/Footer.component";
+import dummyData from "./data/dummyData.json";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ background: "#414141" }}>
+      <Menu />
+      <BannerMain
+        videoTitle={dummyData.categorias[0].videos[0].titulo}
+        url={dummyData.categorias[0].videos[0].url}
+        videoDescription={
+          "O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript fazem parte da rotina das desenvolvedoras e desenvolvedores. Mas o que eles fazem, afinal? Descubra com a Vanessa!"
+        }
+      />
+      <Carousel ignoreFirstVideo category={dummyData.categorias[0]} />
+      <Carousel category={dummyData.categorias[1]} />
+      <Carousel category={dummyData.categorias[2]} />
+      <Carousel category={dummyData.categorias[3]} />
+      <Carousel category={dummyData.categorias[4]} />
+      <Carousel category={dummyData.categorias[5]} />
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
