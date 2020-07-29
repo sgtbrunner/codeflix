@@ -1,11 +1,11 @@
 import React from 'react';
-import { Menu } from './components/Menu/Menu.component';
-import BannerMain from './components/BannerMain/BannerMain.component';
-import Carousel from './components/Carousel/Carousel.component';
-import Footer from './components/Footer/Footer.component';
-import dummyData from './data/dummyData.json';
+import { Menu } from '../../components/Menu/Menu.component';
+import BannerMain from '../../components/BannerMain/BannerMain.component';
+import { Carousel } from '../../components/Carousel/Carousel.component';
+import { Footer } from '../../components/Footer/Footer.component';
+import dummyData from '../../data/dummyData.json';
 
-const App = () => {
+export const Home = () => {
 	return (
 		<div style={{ background: '#414141' }}>
 			<Menu />
@@ -26,5 +26,3 @@ const App = () => {
 		</div>
 	);
 };
-
-export default App;
