@@ -15,10 +15,10 @@ const Main = styled.main`
 
 export const DefaultPage = ({ children }) => {
 	return (
-		<div>
+		<>
 			<Menu />
 			<Main>{children}</Main>
 			<Footer />
-		</div>
+		</>
 	);
 };
