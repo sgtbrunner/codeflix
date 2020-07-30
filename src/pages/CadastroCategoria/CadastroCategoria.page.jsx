@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { DefaultPage } from '../../components/DefaultPage/DefaultPage.component';
+import { FormField } from '../../components/FormField/FormField.component';
 
 export const CadastroCategoria = () => {
 	const initialCategoryValues = {
@@ -33,50 +34,29 @@ export const CadastroCategoria = () => {
 		<DefaultPage>
 			<h1>New Category: {values.name}</h1>
 			<form onSubmit={() => onFormSubmit()}>
-				<label>
-          			Category Name:
-					<input
-						type="text"
-						name="name"
-						value={values.name}
-						onChange={(event) =>
-							handleChange(
-								event.target.getAttribute('name'),
-								event.target.value
-							)
-						}
-					/>
-				</label>
+				<FormField 
+					name="name"
+					label="Category Name"
+					type="text"
+					value={values.name} 
+					onChange={handleChange}
+				/>
 				<br />
-				<label>
-          			Description:
-					<textarea
-						type="text"
-						name="description"
-						value={values.description}
-						onChange={(event) =>
-							handleChange(
-								event.target.getAttribute('name'),
-								event.target.value
-							)
-						}
-					/>
-				</label>
+				<FormField 
+					name="description"
+					label="Description"
+					type="text" 
+					value={values.description} 
+					onChange={handleChange}
+				/>
 				<br />
-				<label>
-          			Color:
-					<input
-						type="color"
-						name="color"
-						value={values.color}
-						onChange={(event) =>
-							handleChange(
-								event.target.getAttribute('name'),
-								event.target.value
-							)
-						}
-					/>
-				</label>
+				<FormField 
+					name="color"
+					label="Color"
+					type="color" 
+					value={values.color} 
+					onChange={handleChange}
+				/>
 				<br />
 				<button type="submit">Cadastrar</button>
 				<ul>
