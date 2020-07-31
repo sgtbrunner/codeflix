@@ -10,13 +10,13 @@ import './index.css';
 const ErrorPage = () => (<div>Ooooooppppsss</div>);
 
 ReactDOM.render(
-	<Router>
-		<Switch>
-			<Route path="/" component={Home} exact />
-			<Route path="/cadastro/video" component={CadastroVideo} />
-			<Route path="/cadastro/categoria" component={CadastroCategoria} />
-			<Route component={ErrorPage} />
-		</Switch>
-	</Router>,
-	document.getElementById('root')
+  <Router>
+    <Switch>
+      <Route path="/" component={Home} exact />
+      <Route path="/cadastro/video" component={CadastroVideo} />
+      <Route path="/cadastro/categoria" component={CadastroCategoria} />
+      <Route component={ErrorPage} />
+    </Switch>
+  </Router>,
+  document.getElementById('root'),
 );

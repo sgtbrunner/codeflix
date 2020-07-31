@@ -13,12 +13,10 @@ const Main = styled.main`
   padding-right: 5%;
 `;
 
-export const DefaultPage = ({ children }) => {
-	return (
-		<>
-			<Menu />
-			<Main>{children}</Main>
-			<Footer />
-		</>
-	);
-};
+export const DefaultPage = ({ children }) => (
+  <>
+    <Menu />
+    <Main>{children}</Main>
+    <Footer />
+  </>
+);
