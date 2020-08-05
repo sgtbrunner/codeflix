@@ -6,6 +6,7 @@ import { FormField } from '../../components/FormField/FormField.component';
 
 export const CadastroCategoria = () => {
   const initialCategoryValues = {
+    id: 0,
     name: '',
     description: '',
     color: '#ffffff',
@@ -15,6 +16,7 @@ export const CadastroCategoria = () => {
   const [values, setValues] = useState(initialCategoryValues);
 
   const onFormSubmit = () => {
+    console.log(values);
     setCategories([...categories, values]);
     setValues(initialCategoryValues);
   };
@@ -22,34 +24,28 @@ export const CadastroCategoria = () => {
   const setValue = (property, value) => {
     setValues({
       ...values,
-      [property]: value,
+      id: categories.length + 1,
+      [property]: value
     });
   };
 
-  const handleChange = (property, value) => {
-    setValue(property, value);
+  const handleChange = (event) => {
+    setValue(event.target.name, event.target.value);
   };
 
   useEffect(() => {
     if (window.location.href.includes('localhost')) {
       const URL = 'http://localhost:8080/categorias';
-      fetch(URL).then(async (respostaDoServer) => {
-        if (respostaDoServer.ok) {
-          const resposta = await respostaDoServer.json();
-          setCategories(resposta);
-          return;
-        }
-        throw new Error('Não foi possível pegar os dados');
-      });
+      fetch(URL)
+      .then(response => response.json())
+      .then(data => setCategories(data))
+      .catch(() => { console.log('Não foi possível pegar os dados'); });
     }
   }, []);
 
   return (
     <DefaultPage>
-      <h1>
-        New Category:
-        {values.name}
-      </h1>
+      <h1>New Category: {values.name}</h1>
       <form onSubmit={() => onFormSubmit()}>
         <FormField
           name="name"
@@ -78,7 +74,7 @@ export const CadastroCategoria = () => {
         <button type="submit">Cadastrar</button>
         <ul>
           {categories.map((category) => (
-            <li key={category.id}>{category.titulo}</li>
+            <li key={category.id}>{category.name}</li>
           ))}
         </ul>
       </form>

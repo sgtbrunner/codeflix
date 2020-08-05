@@ -2,8 +2,8 @@
     "categorias": [
       {
         "id": 1,
-        "titulo": "Front End",
-        "cor": "#6BD1FF",
+        "name": "Front End",
+        "color": "#6BD1FF",
         "link_extra": {
           "text": "Formação de Front End na Alura",
           "url": "https://www.alura.com.br/cursos-online-front-end"
@@ -11,8 +11,8 @@
       },
       {
         "id": 2,
-        "titulo": "Back End",
-        "cor": "#00C86F",
+        "name": "Back End",
+        "color": "#00C86F",
         "link_extra": {
           "text": "Cursos de Back End na Alura",
           "url": "https://www.alura.com.br/cursos-online-programacao"
@@ -20,8 +20,8 @@
       },
       {
         "id": 3,
-        "titulo": "Data Science e Inteligência Artificial",
-        "cor": "#9cd33b",
+        "name": "Data Science e Inteligência Artificial",
+        "color": "#9cd33b",
         "link_extra": {
           "text": "Cursos de Data Science na Alura",
           "url": "https://www.alura.com.br/cursos-online-mobile"
@@ -29,13 +29,13 @@
       },
       {
         "id": 4,
-        "titulo": "Filmes",
-        "cor": "orange"
+        "name": "Filmes",
+        "color": "orange"
       },
       {
         "id": 5,
-        "titulo": "Games",
-        "cor": "red",
+        "name": "Games",
+        "color": "red",
         "link_extra": {
           "text": "Formação de Jogos na Alura",
           "url": "https://www.alura.com.br/cursos-online-front-end"
