@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { retrieveCategories } from '../../services/dataStorage.service';
 import { DefaultPage } from '../../components/DefaultPage/DefaultPage.component';
 import { FormField } from '../../components/FormField/FormField.component';
 
@@ -12,20 +13,19 @@ export const CadastroCategoria = () => {
     color: '#ffffff',
   };
 
+  const [category, setCategory] = useState(initialCategoryValues);
   const [categories, setCategories] = useState([]);
-  const [values, setValues] = useState(initialCategoryValues);
 
-  const onFormSubmit = () => {
-    console.log(values);
-    setCategories([...categories, values]);
-    setValues(initialCategoryValues);
+  const onFormSubmit = async () => {
+    setCategories([...categories, category]);
+    setCategory(initialCategoryValues);
   };
 
   const setValue = (property, value) => {
-    setValues({
-      ...values,
+    setCategory({
+      ...category,
       id: categories.length + 1,
-      [property]: value
+      [property]: value,
     });
   };
 
@@ -34,24 +34,25 @@ export const CadastroCategoria = () => {
   };
 
   useEffect(() => {
-    if (window.location.href.includes('localhost')) {
-      const URL = 'http://localhost:8080/categorias';
-      fetch(URL)
-      .then(response => response.json())
-      .then(data => setCategories(data))
-      .catch(() => { console.log('Não foi possível pegar os dados'); });
+    async function getData() {
+      const categoriesData = await retrieveCategories();
+      setCategories(categoriesData);
     }
+    getData();
   }, []);
 
   return (
     <DefaultPage>
-      <h1>New Category: {values.name}</h1>
+      <h1>
+        New Category:
+        {category.name}
+      </h1>
       <form onSubmit={() => onFormSubmit()}>
         <FormField
           name="name"
           label="Category Name"
           type="text"
-          value={values.name}
+          value={category.name}
           onChange={handleChange}
         />
         <br />
@@ -59,7 +60,7 @@ export const CadastroCategoria = () => {
           name="description"
           label="Description"
           type="textarea"
-          value={values.description}
+          value={category.description}
           onChange={handleChange}
         />
         <br />
@@ -67,7 +68,7 @@ export const CadastroCategoria = () => {
           name="color"
           label="Color"
           type="color"
-          value={values.color}
+          value={category.color}
           onChange={handleChange}
         />
         <br />
